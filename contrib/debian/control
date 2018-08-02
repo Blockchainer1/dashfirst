@@ -1,0 +1,68 @@
+Source: dashfirst
+Section: utils
+Priority: optional
+Maintainer: Holger Schinzel <holger@dashfirst.site>
+Uploaders: Holger Schinzel <holger@dashfirst.site>
+Build-Depends: debhelper,
+ devscripts,
+ automake,
+ libtool,
+ bash-completion,
+ libdb4.8++-dev,
+ libssl-dev,
+ pkg-config,
+ libevent-dev,
+ libboost-system1.48-dev | libboost-system-dev (>> 1.35),
+ libboost-filesystem1.48-dev | libboost-filesystem-dev (>> 1.35),
+ libboost-program-options1.48-dev | libboost-program-options-dev (>> 1.35),
+ libboost-thread1.48-dev | libboost-thread-dev (>> 1.35),
+ libboost-test1.48-dev | libboost-test-dev (>> 1.35),
+ libboost-chrono1.48-dev | libboost-chrono-dev (>> 1.35),
+ qt4-qmake,
+ libqt4-dev,
+ libqrencode-dev,
+ libprotobuf-dev, protobuf-compiler,
+ python
+Standards-Version: 3.9.2
+Homepage: https://www.dashfirst.site/
+Vcs-Git: git://github.com/dashfirst/dashfirst.git
+Vcs-Browser: https://github.com/dashfirst/dashfirst
+
+Package: dashfirstd
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: peer-to-peer network based digital currency - daemon
+ DashFirst is an experimental new digital currency that enables anonymous, instant
+ payments to anyone, anywhere in the world. DashFirst uses peer-to-peer
+ technology to operate with no central authority: managing transactions
+ and issuing money are carried out collectively by the network. DashFirst Core
+ is the name of the open source software which enables the use of this currency.
+ .
+ This package provides the daemon, dashfirstd, and the CLI tool
+ dashfirst-cli to interact with the daemon.
+
+Package: dashfirst-qt
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: peer-to-peer network based digital currency - Qt GUI
+ DashFirst is an experimental new digital currency that enables anonymous, instant
+ payments to anyone, anywhere in the world. DashFirst uses peer-to-peer
+ technology to operate with no central authority: managing transactions
+ and issuing money are carried out collectively by the network. DashFirst Core
+ is the name of the open source software which enables the use of this currency.
+ .
+ This package provides DashFirst-Qt, a GUI for DashFirst based on Qt.
+
+Package: dashfirst-tx
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: peer-to-peer digital currency - standalone transaction tool
+ DashFirst is an experimental new digital currency that enables anonymous, instant
+ payments to anyone, anywhere in the world. DashFirst uses peer-to-peer
+ technology to operate with no central authority: managing transactions
+ and issuing money are carried out collectively by the network. DashFirst Core
+ is the name of the open source software which enables the use of this currency.
+ .
+ This package provides dashfirst-tx, a command-line transaction creation
+ tool which can be used without a dashfirst daemon.  Some means of
+ exchanging minimal transaction data with peers is still required.

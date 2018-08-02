@@ -1,0 +1,11 @@
+[Protocol]
+exec=dashfirst-qt '%u'
+protocol=dashfirst
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false

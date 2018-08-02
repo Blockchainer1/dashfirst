@@ -1,0 +1,22 @@
+[Unit]
+Description=DashFirst's distributed currency daemon
+After=network.target
+
+[Service]
+User=dashfirstcore
+Group=dashfirstcore
+
+Type=forking
+PIDFile=/var/lib/dashfirstd/dashfirstd.pid
+ExecStart=/usr/bin/dashfirstd -daemon -pid=/var/lib/dashfirstd/dashfirstd.pid \
+-conf=/etc/dashfirstcore/dashfirst.conf -datadir=/var/lib/dashfirstd -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

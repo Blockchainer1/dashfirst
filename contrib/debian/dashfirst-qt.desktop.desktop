@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=DashFirst
+Comment=DashFirst P2P Cryptocurrency
+Exec=dashfirst-qt %u
+Terminal=false
+Type=Application
+Icon=dashfirst128
+MimeType=x-scheme-handler/dashfirst;
+Categories=Office;Finance;
+Name[en_US]=dashfirst-qt.desktop
