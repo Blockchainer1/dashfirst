@@ -44,7 +44,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "Indian Law Commission Recognizes Cryptocurrency as an Electronic Payment Report";
+    const char* pszTimestamp = "Cannabitz | 2019 Oct 19";
     const CScript genesisOutputScript = CScript() << ParseHex("047332136d75791157d648d15c54e2131cb99bed41cc7d292b0afd72e50ce956a85b7195a8d3cc1b47174b432541dc0a3df826f39c646487e5a8f677b24e0423c3") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
