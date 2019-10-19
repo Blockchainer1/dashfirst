@@ -1770,7 +1770,7 @@ if (nPrevHeight == 1) {
         nSubsidy = 0;
     }
 
-
+	nSubsidy = nSubsidy*COIN;
 
 //    // yearly decline of production by ~50% per year until reached max coin ~32M.
 //    for (int i = consensusParams.nSubsidyHalvingInterval; i <= nPrevHeight; i += consensusParams.nSubsidyHalvingInterval) {
