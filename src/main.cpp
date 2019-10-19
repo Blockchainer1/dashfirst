@@ -1744,8 +1744,10 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
 
 CAmount nSubsidy;
 
-if (nPrevHeight < 5184) {
-        nSubsidy = 3801.118;
+if (nPrevHeight == 1) {
+        nSubsidy = 19705000;
+    } else if (nPrevHeight < 5184) {
+        nSubsidy = 250;
     } else if (nPrevHeight < 136585) {
         nSubsidy = 200;
     }  else if (nPrevHeight < 399386) {
