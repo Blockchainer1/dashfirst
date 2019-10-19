@@ -120,44 +120,44 @@ public:
 
         // calculate Genesis Block
         // Reset genesis
-        consensus.hashGenesisBlock = uint256S("0x");
+//        consensus.hashGenesisBlock = uint256S("0x");
 
-        if (true && (genesis.GetHash() != consensus.hashGenesisBlock)) {
-            LogPrintf("Calculating Mainnet Genesis Block:\n");
-            arith_uint256 hashTarget = arith_uint256().SetCompact(genesis.nBits);
-            uint256 hash;
-            genesis.nNonce = 0;
-            // This will figure out a valid hash and Nonce if you're
-            // creating a different genesis block:
-            // uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
-            // hashTarget.SetCompact(genesis.nBits, &fNegative, &fOverflow).getuint256();
-            // while (genesis.GetHash() > hashTarget)
-            while (UintToArith256(genesis.GetHash()) > hashTarget)
-            {
-                ++genesis.nNonce;
-                if (genesis.nNonce == 0)
-                {
-                    LogPrintf("NONCE WRAPPED, incrementing time");
-                    std::cout << std::string("NONCE WRAPPED, incrementing time:\n");
-                    ++genesis.nTime;
-                }
-                if (genesis.nNonce % 10000 == 0)
-                {
-                    LogPrintf("Mainnet: nonce %08u: hash = %s \n", genesis.nNonce, genesis.GetHash().ToString().c_str());
-                }
-            }
-            std::cout << "Mainnet ---\n";
-            std::cout << "  nonce: " << genesis.nNonce <<  "\n";
-            std::cout << "   time: " << genesis.nTime << "\n";
-            std::cout << "   hash: " << genesis.GetHash().ToString().c_str() << "\n";
-            std::cout << "   merklehash: "  << genesis.hashMerkleRoot.ToString().c_str() << "\n";
+//        if (true && (genesis.GetHash() != consensus.hashGenesisBlock)) {
+//            LogPrintf("Calculating Mainnet Genesis Block:\n");
+//            arith_uint256 hashTarget = arith_uint256().SetCompact(genesis.nBits);
+//            uint256 hash;
+//            genesis.nNonce = 0;
+//            // This will figure out a valid hash and Nonce if you're
+//            // creating a different genesis block:
+//            // uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
+//            // hashTarget.SetCompact(genesis.nBits, &fNegative, &fOverflow).getuint256();
+//            // while (genesis.GetHash() > hashTarget)
+//            while (UintToArith256(genesis.GetHash()) > hashTarget)
+//            {
+//                ++genesis.nNonce;
+//                if (genesis.nNonce == 0)
+//                {
+//                    LogPrintf("NONCE WRAPPED, incrementing time");
+//                    std::cout << std::string("NONCE WRAPPED, incrementing time:\n");
+//                    ++genesis.nTime;
+//                }
+//                if (genesis.nNonce % 10000 == 0)
+//                {
+//                    LogPrintf("Mainnet: nonce %08u: hash = %s \n", genesis.nNonce, genesis.GetHash().ToString().c_str());
+//                }
+//            }
+//            std::cout << "Mainnet ---\n";
+//            std::cout << "  nonce: " << genesis.nNonce <<  "\n";
+//            std::cout << "   time: " << genesis.nTime << "\n";
+//            std::cout << "   hash: " << genesis.GetHash().ToString().c_str() << "\n";
+//            std::cout << "   merklehash: "  << genesis.hashMerkleRoot.ToString().c_str() << "\n";
 
-        }
+//        }
 
 
 
-        assert(consensus.hashGenesisBlock == uint256S("0x00000f8639b47197a77165da9b98d67b5a547ffd252c241e67ed9c32087bf0d3"));
-        assert(genesis.hashMerkleRoot == uint256S("0x284a5bb2725a382c9c8610c4bd9d63005c7bebd855b6702ef6ce14a7250e12b9"));
+        assert(hashGenesisBlock == uint256("0x0000092e90e4c86393f4b82e67f2be8002cbab1c7a13f9f77d214c05a2ae69c1"));
+        assert(genesis.hashMerkleRoot == uint256("0xcd935b46c9eb2e9df75a90de1682f98acdad95a56b0e399961ce6340e92315ed"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
