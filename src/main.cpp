@@ -1741,71 +1741,48 @@ NOTE:   unlike bitcoin we are using PREVIOUS block height here,
 */
 CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params& consensusParams, bool fSuperblockPartOnly)
 {
-    if (nPrevHeight == 0) {
-        return 500000 * COIN;
-	} else if (nPrevHeight <= 3000) {
-        return 0.2 * COIN;
-	} else if (nPrevHeight <= 8000) {
-        return 2 * COIN;
-	} else if (nPrevHeight <= 13000) {
-        return 6 * COIN;
-	} else if (nPrevHeight <= 28000) {
-        return 15 * COIN;
-	} else if (nPrevHeight <= 43000) {
-        return 30 * COIN;
-	} else if (nPrevHeight <= 95000) {
-        return 40 * COIN;
-	} else if (nPrevHeight <= 105000) {
-        return 1 * COIN;
-	} else if (nPrevHeight <= 110000) {
-        return 40 * COIN;
-	} else if (nPrevHeight <= 115000) {
-        return 45 * COIN;
-	} else if (nPrevHeight <= 120000) {
-        return 50 * COIN;
-	} else if (nPrevHeight <= 125000) {
-        return 60 * COIN;
-	} else if (nPrevHeight <= 130000) {
-        return 70 * COIN;
-	} else if (nPrevHeight <= 135000) {
-        return 80 * COIN;
-	} else if (nPrevHeight <= 140000) {
-        return 90 * COIN;
-	} else if (nPrevHeight <= 145000) {
-        return 100 * COIN;
-	} else if (nPrevHeight <= 150000) {
-		return 110 * COIN;
-	} else if (nPrevHeight <= 155000) {
-        return 120 * COIN;
-	} else if (nPrevHeight <= 160000) {
-        return 130 * COIN;
-	} else if (nPrevHeight <= 165000) {
-        return 140 * COIN;
-	} else if (nPrevHeight <= 170000) {
-        return 150 * COIN;
-	} else if (nPrevHeight <= 175000) {
-        return 160 * COIN;
-	}
+
+
+
+if (nPrevHeight < 5184) {
+        nSubsidyBase = 3801.118;
+    } else if (nPrevHeight < 136585) {
+        nSubsidyBase = 200;
+    }  else if (nPrevHeight < 399386) {
+        nSubsidyBase = 100;
+    } else if (nPrevHeight < 749787) {
+        nSubsidyBase = 50;
+    } else if (nPrevHeight < 1100188) {
+        nSubsidyBase = 25;
+    } else if (nPrevHeight < 1625789) {
+        nSubsidyBase = 12.5;
+    } else if (nPrevHeight < 2238990) {
+        nSubsidyBase = 6.25;
+    } else if (nPrevHeight < 2676991) {
+        nSubsidyBase = 3.125;
+    } else if (nPrevHeight < 3377792) {
+        nSubsidyBase = 1.5625;
+    } else if (nPrevHeight < 4130112) {
+        nSubsidyBase = 0.78125;
+    } else {
+        nSubsidyBase = 0;
+    }
 
     CAmount nSubsidy = 1 * COIN;
 
-    // yearly decline of production by ~50% per year until reached max coin ~32M.
-    for (int i = consensusParams.nSubsidyHalvingInterval; i <= nPrevHeight; i += consensusParams.nSubsidyHalvingInterval) {
-        nSubsidy -= nSubsidy/2;
-    }
+//    // yearly decline of production by ~50% per year until reached max coin ~32M.
+//    for (int i = consensusParams.nSubsidyHalvingInterval; i <= nPrevHeight; i += consensusParams.nSubsidyHalvingInterval) {
+//        nSubsidy -= nSubsidy/2;
+//    }
 
-    return fSuperblockPartOnly ? 0 : nSubsidy;
+    return nSubsidy;
 }
 
 CAmount GetMasternodePayment(int nHeight, CAmount blockValue)
 {
-    if (nHeight <= 140000) {
-	return blockValue/10*9; // 90%
-    } else if (nHeight <= 175000) {
-	return blockValue/20*19; // 95%
-	} else {
-	return blockValue/20; // 5%
-    };
+    CAmount ret = (blockValue/10)*6;
+    return ret;
+
 }
 
 bool IsInitialBlockDownload()
@@ -4495,7 +4472,7 @@ bool LoadBlockIndex()
     return true;
 }
 
-bool InitBlockIndex(const CChainParams& chainparams) 
+bool InitBlockIndex(const CChainParams& chainparams)
 {
     LOCK(cs_main);
 
@@ -4939,12 +4916,12 @@ bool static AlreadyHave(const CInv& inv) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
     case MSG_BLOCK:
         return mapBlockIndex.count(inv.hash);
 
-    /* 
+    /*
         DashFirst Related Inventory Messages
 
         --
 
-        We shouldn't update the sync times for each of the messages when we already have it. 
+        We shouldn't update the sync times for each of the messages when we already have it.
         We're going to be asking many nodes upfront for the full inventory list, so we'll get duplicates of these.
         We want to only update the time on new hits, so that we can time out appropriately if needed.
     */

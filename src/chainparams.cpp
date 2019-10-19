@@ -66,7 +66,7 @@ public:
     CMainParams() {
         strNetworkID = "main";
         consensus.nSubsidyHalvingInterval = 525600; // one year
-        consensus.nMasternodePaymentsStartBlock = 3000; // not true, but it's ok as long as it's less then nMasternodePaymentsIncreaseBlock
+        consensus.nMasternodePaymentsStartBlock = 100; // not true, but it's ok as long as it's less then nMasternodePaymentsIncreaseBlock
         consensus.nMasternodePaymentsIncreaseBlock = 158000; // not used
         consensus.nMasternodePaymentsIncreasePeriod = 576*30; // not used
         consensus.nInstantSendKeepLock = 24;
@@ -86,7 +86,7 @@ public:
         consensus.BIP34Hash = uint256S("0x000000000000024b89b42a942fe0d9fea3bb44ab7bd1b19115dd6a759c0808b8"); // FIX
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
         consensus.nPowTargetTimespan = 60 * 60; // DashFirst: 1 hour, 60 blocks
-        consensus.nPowTargetSpacing = 1 * 60; // DashFirst: 60 seconds
+        consensus.nPowTargetSpacing = 6 * 60; // DashFirst: 60 seconds
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
@@ -163,11 +163,11 @@ public:
         vSeeds.clear();
 
         // DashFirst addresses start with 'U'
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,68);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,28);
         // DashFirst script addresses start with 'u'
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,130);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,17);
         // DashFirst private keys start with 'U' or 'V' (?)
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,69);
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,156);
         // DashFirst BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
         // DashFirst BIP32 prvkeys start with 'xprv' (Bitcoin defaults)
