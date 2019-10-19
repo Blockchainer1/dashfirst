@@ -156,8 +156,8 @@ public:
 
 
 
-        assert(consensus.hashGenesisBlock == uint256S("0x000009c8e0f0e7193852d33acc4bf4035d044201a30f35bde009d43fb070e8a9"));
-        assert(genesis.hashMerkleRoot == uint256S("0x80f88814431479eced728caedbd2d70ab468a1379238d0775d066d0d5ff4d98d"));
+        assert(consensus.hashGenesisBlock == uint256S("0x00000f8639b47197a77165da9b98d67b5a547ffd252c241e67ed9c32087bf0d3"));
+        assert(genesis.hashMerkleRoot == uint256S("0x284a5bb2725a382c9c8610c4bd9d63005c7bebd855b6702ef6ce14a7250e12b9"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
