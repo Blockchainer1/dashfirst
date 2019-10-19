@@ -120,7 +120,7 @@ public:
 
         // calculate Genesis Block
         // Reset genesis
-        //consensus.hashGenesisBlock = uint256S("0x");
+        consensus.hashGenesisBlock = uint256S("0x");
 
         if (true && (genesis.GetHash() != consensus.hashGenesisBlock)) {
             LogPrintf("Calculating Mainnet Genesis Block:\n");
