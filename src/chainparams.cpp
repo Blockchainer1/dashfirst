@@ -144,7 +144,6 @@ public:
                 if (genesis.nNonce % 10000 == 0)
                 {
                     LogPrintf("Mainnet: nonce %08u: hash = %s \n", genesis.nNonce, genesis.GetHash().ToString().c_str());
-                    // std::cout << strNetworkID << " nonce: " << genesis.nNonce << " time: " << genesis.nTime << " hash: " << genesis.GetHash().ToString().c_str() << "\n";
                 }
             }
             std::cout << "Mainnet ---\n";
@@ -152,9 +151,9 @@ public:
             std::cout << "   time: " << genesis.nTime << "\n";
             std::cout << "   hash: " << genesis.GetHash().ToString().c_str() << "\n";
             std::cout << "   merklehash: "  << genesis.hashMerkleRoot.ToString().c_str() << "\n";
-            // Mainnet --- nonce: 296277 time: 1390095618 hash: 000000bdd771b14e5a031806292305e563956ce2584278de414d9965f6ab54b0
+
         }
-        std::cout << std::string("Finished calculating Mainnet Genesis Block:\n");
+
 
 
         assert(consensus.hashGenesisBlock == uint256S("0x000009c8e0f0e7193852d33acc4bf4035d044201a30f35bde009d43fb070e8a9"));
