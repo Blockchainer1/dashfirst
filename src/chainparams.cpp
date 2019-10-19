@@ -114,13 +114,13 @@ public:
         nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1571482372, 1304338, 0x1e0ffff0, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1571482372, 547546, 0x1e0ffff0, 1, 50 * COIN);
 	    consensus.hashGenesisBlock = genesis.GetHash();
 
 
         // calculate Genesis Block
         // Reset genesis
-        consensus.hashGenesisBlock = uint256S("0x");
+        //consensus.hashGenesisBlock = uint256S("0x");
 
         if (true && (genesis.GetHash() != consensus.hashGenesisBlock)) {
             LogPrintf("Calculating Mainnet Genesis Block:\n");
